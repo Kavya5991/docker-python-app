@@ -5,8 +5,9 @@ RUN apt-get update && apt-get install -y \
     python3 -y \
     python3-pip -y \
     mkdir app
-COPY . app\
-WORKDIR app\
+RUN git clone "git@github.com:Kavya5991/docker-python-app.git"
+COPY . /app
+WORKDIR /app
 RUN pip3 install -r requirements.txt
 
 
