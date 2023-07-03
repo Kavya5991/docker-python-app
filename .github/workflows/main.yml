@@ -1,0 +1,27 @@
+name: Build Docker Image
+on:
+  push:
+    branches:
+      - main
+env:
+  PYTHON_IMAGE_TAG: python_actions:updated
+jobs:
+  Python:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v1
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_TOKEN }}
+
+      - name: Build and Push Python image to Docker Hub
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: docker.io/kavyakolla/${{ env.PYTHON_IMAGE_TAG }}
