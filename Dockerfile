@@ -6,7 +6,7 @@ RUN apt update && apt install -y \
     python3-pip -y \
     git
 RUN mkdir app
-RUN git clone "git@github.com:Kavya5991/docker-python-app.git"
+RUN git clone "https://github.com/Kavya5991/docker-python-app.git"
 COPY . /app
 WORKDIR app
 
