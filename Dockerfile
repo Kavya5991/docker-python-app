@@ -10,6 +10,6 @@ COPY . /app
 WORKDIR app
 
 RUN pip3 install -r requirements.txt
-EXPOSE 80
+EXPOSE 8087
 
 CMD ["python3","app.py"]
