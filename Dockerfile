@@ -4,10 +4,6 @@ FROM ubuntu:22.04
 RUN apt update && apt install -y \
     python3 -y \
     python3-pip -y \
-    git
-RUN mkdir app
-COPY . /app
-WORKDIR app
 
 RUN pip3 install -r requirements.txt
 EXPOSE 80
